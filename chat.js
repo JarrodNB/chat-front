@@ -32,10 +32,10 @@ function signOut() {
 			console.log(response.responseJSON);
 		});
 }
-
 $(document).ready(function() {
 	var textArea = document.getElementById("chat");
-	function getMessages() {
+	var messageId = -1;
+	function getMessages(isFirstLogin) {
 		$.get(sendMessageUrl,
 			{
 				auth_token: token
@@ -43,27 +43,30 @@ $(document).ready(function() {
 			function(data, status) {
 				textArea.innerHTML = "";
 				var messages = data;
-				messages.forEach(message => {
-					var displayMessage = "\n" + message.username + " says: " + message.body;
-					textArea.append(displayMessage);
-				});
+				if (messages.length < 10) {
+					messageId = 0;
+				} else if (isFirstLogin) {
+					messageId = messages.length - 10;
+				}
+				for (var index = messageId; index < messages.length; index++){
+						var message = messages[index];
+						var displayMessage = "\n" + message.username + " says: " + message.body;
+						textArea.append(displayMessage);
+					}
 				textArea.scrollTop = textArea.scrollHeight;
 			}, 'json').fail(function (response){
 				location.assign('login.html');
 			});
-		
 	}
-	getMessages();
+	getMessages(true);
 	function sleep(ms) {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
 	async function refresh(){
 		while (true) {
-		getMessages();
+		getMessages(false);
 		await sleep(2000);
 		}
 	}
 	refresh();
-	
-	
 });
