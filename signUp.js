@@ -20,14 +20,16 @@ function signUp() {
 			}
 		},
 		function(data, status){
-			//if successful
-			// launch to login
-			// else invalid stuff warning
 			console.log(data);
 			console.log(status);
 			location.assign('login.html');
 		}, 'json').fail( function (response) {
 			console.log(response.responseJSON);
+			var warning = "";
+			response.responseJSON.forEach(error => {
+				warning += error + ", ";
+			});
+			alert(warning.substring(0, warning.length - 2));
 		});
 	
 }

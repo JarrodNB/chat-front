@@ -21,6 +21,8 @@ function signIn() {
 			window.localStorage.setItem("token", data.auth_token + "");
 			console.log(window.localStorage.getItem("token"));
 			location.assign('chat.html');
+		}).fail(function(response) {
+			alert("Invalid Email or Password");
 		});
 }
 $(document).ready(function() {
