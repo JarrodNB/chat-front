@@ -1,5 +1,4 @@
-var loginUrl = "https://chat-room-api-jbailey21.c9users.io/sessions";
-//loginUrl = "https://chat-api-rails.herokuapp.com/sessions";
+var loginUrl = "https://chat-api-rails.herokuapp.com/sessions";
 function signIn() {
 	var userEmail = document.getElementById("email").value;
 	var userPassword = document.getElementById("password").value;

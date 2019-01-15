@@ -1,6 +1,6 @@
-var sendMessageUrl = "https://chat-room-api-jbailey21.c9users.io/messages";
+var sendMessageUrl = "https://chat-api-rails.herokuapp.com/messages";
 var token = window.localStorage.getItem("token");
-var sessionsUrl = "https://chat-room-api-jbailey21.c9users.io/sessions/destroy";
+var sessionsUrl = "https://chat-api-rails.herokuapp.com/sessions/destroy";
 function sendMessage() {
 	var userMessage = document.getElementById("message").value;
 	$.post(sendMessageUrl, 
