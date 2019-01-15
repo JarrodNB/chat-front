@@ -1,6 +1,4 @@
-var signUpUrl = "https://chat-room-api-jbailey21.c9users.io/users"
-//signUpUrl = "https://chat-api-rails.herokuapp.com/users";
-// add error handler
+var signUpUrl = "https://chat-api-rails.herokuapp.com/users"
 function signUp() {
 	var userEmail = document.getElementById("email").value;
 	var userPassword = document.getElementById("password").value;
