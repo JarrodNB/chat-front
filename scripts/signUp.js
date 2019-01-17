@@ -18,16 +18,12 @@ function signUp() {
 			}
 		},
 		function(data, status){
-			console.log(data);
-			console.log(status);
-			location.assign('login.html');
+			location.assign('../html/index.html');
 		}, 'json').fail( function (response) {
-			console.log(response.responseJSON);
-			var warning = "";
-			response.responseJSON.forEach(error => {
-				warning += error + ", ";
-			});
-			alert(warning.substring(0, warning.length - 2));
+				var warning = "";
+				response.responseJSON.forEach(error => {
+					warning += error + ", ";
+				});
+				alert(warning.substring(0, warning.length - 2));
 		});
-	
 }

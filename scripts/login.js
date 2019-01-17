@@ -12,17 +12,9 @@ function signIn() {
 			}
 		},
 		function(data, status){
-			//if successful
-			// get authen from data and launch to chat
-			// else wrong password warning
-			console.log(data)
-			console.log(status);
 			window.localStorage.setItem("token", data.auth_token + "");
-			console.log(window.localStorage.getItem("token"));
-			location.assign('chat.html');
+			location.assign('../html/chat.html');
 		}).fail(function(response) {
-			alert("Invalid Email or Password");
+				alert("Invalid Email or Password");
 		});
 }
-$(document).ready(function() {
-});
